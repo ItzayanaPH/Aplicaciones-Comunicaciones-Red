@@ -25,7 +25,7 @@ public class CMulticast {
             cl.joinGroup(gpo);
             System.out.println("Unido al grupo");
             for(;;){
-                DatagramPacket p = new DatagramPacket(new byte[10],10);
+                DatagramPacket p = new DatagramPacket(new byte[15],15);
                 cl.receive(p);
                 String msj = new String(p.getData());
                 System.out.println("Datagrama recibido ... "+msj);
@@ -33,7 +33,7 @@ public class CMulticast {
 
                 DatagramPacket pC = new DatagramPacket(b,b.length,gpo,9999);
                 cl.send(pC);
-                System.out.println("Enviando mensaje desde el cliente: "+ msjC + "con un TTL = "+ cl.getTimeToLive());
+                System.out.println("Enviando mensaje desde el cliente: "+ msjC + " con un TTL = "+ cl.getTimeToLive());
                 try{
                   Thread.sleep(3000);
                 } catch (InterruptedException ie){
